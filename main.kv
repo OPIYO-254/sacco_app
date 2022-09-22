@@ -1,0 +1,118 @@
+#: import get_color_from_hex kivy.utils.get_color_from_hex
+#: import MDDataTable kivymd.uix.datatables.MDDataTable
+#: import FitImage kivymd.uix.fitimage.FitImage
+#: import SlideTransition kivy.uix.screenmanager.SlideTransition
+#: import uniform random
+#: import Widget kivy.uix.widget
+#: import Button kivy.uix.button
+#: import Color kivy.graphics
+#: import Line kivy.graphics
+
+<RaisedButton@MDRaisedButton>:
+    size_hint: .8, .06
+    font_name: "Poppins-SemiBold"
+    md_bg_color: 9/255, 178/255, 159/255, 1
+    radius: [10,]
+Screen:
+    name: "main-screen"
+    on_enter: app.animate_circle(circle)
+    # on_leave: app.remove_members()
+    BoxLayout:
+        orientation: "vertical"
+        MDFloatLayout:
+            md_bg_color: (9/255, 178/255, 159/255, .2)
+            RelativeLayout:
+                id: circle
+                size_hint: 0,0
+                pos_hint: {'center_x':0,'center_y':0}
+                canvas:
+                    Color:
+                        rgba: 9/255, 178/255, 159/255,1
+                    Ellipse:
+                        pos: 0, 0
+                        size: self.size
+            # AsyncImage:    
+            FitImage:
+                source: "assets/images/logo.png"
+                size_hint_y: None
+                size_hint_x: None
+                height: dp(120)
+                width: dp(120)
+                pos_hint: {"center_x": .5, "center_y": .8}
+                radius: [120,]
+            MDLabel:
+                text: 'Welcome to Sojrel Sacco Ltd'
+                pos_hint: {"center_x": .5, "center_y": .55}
+                halign:'center'
+                font_name: 'Poppins-Bold'
+                font_size:'18dp'
+                color: 9/255, 178/255, 159/255,1
+            MDLabel:
+                text: "Empowering youth through provision \nof affordable financial services"
+                pos_hint: {"center_x": .5, "center_y": .45}
+                halign:'center'
+                font_name: 'Poppins'
+                font_size:'12dp'
+            RaisedButton:
+                text: "Login"
+                pos_hint: {"center_x": .5, "center_y": .325}
+                size_hint_x:.4
+                on_release: 
+                    app.load_login()
+                    # app.root.transition.transition.direction='right'
+                    # root.manager.current='login-screen'
+                    
+
+<CardButton@MDRaisedButton>:
+    size_hint: 1,.2
+    text_color: 9/255, 178/255, 159/255, 1
+    md_bg_color:(57/255, 56/255, 56/255, 1)
+    font_name: "Poppins-SemiBold"
+
+
+
+
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

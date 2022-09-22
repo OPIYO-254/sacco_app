@@ -1,0 +1,114 @@
+
+<LoanCard@MDCard>:
+    size_hint: .9, None
+    height: '150dp'
+    md_bg_color: 1,1,1,1 #(57/255, 56/255, 56/255, .65)
+    orientation: 'vertical'
+    padding: '20dp'
+    radius:[20,]
+
+<LoanIcon@MDIcon>:
+    pos_hint: {"center_x": .5, "center_y": .75}
+    color: get_color_from_hex("#F47E09")
+<LoanLabel@MDLabel>:
+    font_name: "assets/Poppins/Poppins-Bold.ttf"
+    font_size: '12dp'
+    pos_hint: {"center_x": .5, "center_y": .5}
+    color: 6/255, 188/255, 34/255, 1
+    halign: 'center'
+Screen:
+    name: 'loan_products'
+    MDBoxLayout:
+        orientation: 'vertical'
+        md_bg_color: (9/255, 178/255, 159/255, .2)
+        TopBar:
+            left_action_items : [["chevron-left" , lambda _: setattr(root.manager, 'current', 'registered_members')]]
+            title: 'Loan Products'
+        ScrollView:
+            size: self.size
+            GridLayout:
+                cols: 2
+                size_hint_y: None
+                height: self.minimum_height
+                width: self.minimum_width
+                spacing: '10dp'
+                padding: '20dp'
+                LoanCard:
+                    on_release:
+                        app.load_loan_page(emergency) 
+                        # root.manager.current='apply_loan'
+                        # root.manager.transision = SlideTransition(direction='left')
+                    LoanIcon:
+                        icon: "clock"
+                        
+                    LoanLabel:
+                        id: emergency
+                        text: 'Emergency'
+                        
+                LoanCard:
+                    on_release: 
+                        app.load_loan_page(jijenge)
+                        # root.manager.current='apply_loan'
+                    LoanIcon:
+                        icon: "progress-star"
+                        
+                    LoanLabel:
+                        id: jijenge
+                        text: 'Jijenge'
+                        
+                LoanCard:
+                    on_release: 
+                        app.load_loan_page(laptop)
+                        # root.manager.current='apply_loan'
+                    LoanIcon:
+                        icon: "laptop"
+                        
+                    LoanLabel:
+                        id: laptop
+                        text: 'Asset'
+                        
+                LoanCard: 
+                    on_release: 
+                        app.load_loan_page(normal)
+                        # root.manager.current='apply_loan'
+                    LoanIcon:
+                        icon: "cash-fast"
+                        
+                    LoanLabel:
+                        id: normal
+                        text: 'Normal'
+                        
+                LoanCard:
+                    on_release: 
+                        app.load_loan_page(dev)
+                        # root.manager.current='apply_loan'
+                    LoanIcon:
+                        icon: "chart-tree"
+                        
+                    LoanLabel:
+                        id: dev
+                        text: 'Development'
+                        
+                LoanCard:
+                    on_release: 
+                        app.load_loan_page(school)
+                        # root.manager.current='apply_loan'
+                    LoanIcon:
+                        icon: "school"
+                        
+                    LoanLabel:
+                        id: school
+                        text: 'School Fees'
+                        
+                
+                        
+                # LoanCard:
+                #     on_release: 
+                #         app.load_loan_page(flash)
+                #         # root.manager.current='apply_loan'
+                #     LoanIcon:
+                #         icon: "flash"
+                        
+                #     LoanLabel:
+                #         id: flash
+                #         text: 'Flash'

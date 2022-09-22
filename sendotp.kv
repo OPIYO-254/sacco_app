@@ -1,0 +1,28 @@
+
+Screen:
+    name: 'send_reset_otp'
+    BoxLayout:
+        orientation: "vertical"
+        TopBar:
+            left_action_items : [["chevron-left" , lambda _: setattr(root.manager, 'current', 'login-screen')]]
+            title: "Reset Password"
+        MDFloatLayout:
+            md_bg_color: 1,1,1,1
+            
+            MDFloatLayout:
+                size_hint: 1, .16
+                pos_hint: {"center_x": .5, "center_y": .85}
+                TextField:
+                    id: reset_email
+                    hint_text: "Email"
+                    pos_hint: {"center_x": .5, "center_y": .5}
+                    icon_right: "email"
+                    size_hint: .8, .9
+
+            MDFloatLayout:
+                size_hint: 1, .16
+                pos_hint: {"center_x": .5, "center_y": .7}
+                RaisedButton:
+                    text: "Send"
+                    pos_hint: {"center_x": .5, "center_y": .5}
+                    on_release: app.send_reset_otp()

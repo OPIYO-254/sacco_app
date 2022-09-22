@@ -1,0 +1,61 @@
+MDScreen:
+    name:'nextofkins'
+    MDBoxLayout:
+        orientation: 'vertical'
+        md_bg_color:9/255, 178/255, 159/255, .1
+        TopBar:
+            left_action_items : [["chevron-left" , lambda _: setattr(root.manager, 'current', 'registered_members')]]
+            title: 'Add Next of Kin'
+        MDFloatLayout:
+            MDBoxLayout:
+                size_hint:.8,.08
+                padding:5
+                pos_hint: {'center_x': .5, 'center_y': .9}
+                MDLabel:
+                    text:'Membership No.'
+                    halign:'left'
+                    color:9/255, 178/255, 159/255, 1
+                    font_name:'Poppins-SemiBold'
+                MDLabel:
+                    id:membership_no
+                    hint_text: 'Membership No.'
+                    halign:'right'
+                    color:9/255, 178/255, 159/255, 1
+                    font_name:'Poppins-SemiBold'
+                    size_hint_x:.2
+            TextField:
+                id:kin_id
+                hint_text: 'Kin ID No.'
+                pos_hint: {'center_x': .5, 'center_y': .8}
+                size_hint_x: .8
+            TextField:
+                id:fname
+                hint_text: 'First Name'
+                pos_hint: {'center_x': .5, 'center_y': .7}
+                size_hint_x: .8
+            TextField:
+                id:mname
+                hint_text: 'Middle Name(Optional)'
+                pos_hint: {'center_x': .5, 'center_y': .6}
+                size_hint_x: .8
+            TextField:
+                id:lname
+                hint_text: 'Last Name'
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                size_hint_x: .8
+            
+            TextField:
+                id:perce
+                hint_text: 'Percentage(Optional)'
+                pos_hint: {'center_x': .5, 'center_y': .4}
+                size_hint_x: .8
+            RaisedButton:
+                text: "Add"
+                pos_hint: {'center_x': .5, 'center_y': .275}
+                on_release: 
+                    app.add_next_of_kin_details(membership_no, kin_id, fname, mname, lname, perce)
+        
+
+
+
+                

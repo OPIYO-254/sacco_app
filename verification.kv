@@ -1,0 +1,33 @@
+Screen:
+    name: 'user_verification'
+    BoxLayout:
+        orientation: 'vertical'
+        TopBar:
+            md_bg_color: (9/255, 178/255, 159/255, 1)
+            left_action_items : [["chevron-left" , lambda _: setattr(root.manager, 'current', 'signup-screen')]]
+        MDFloatLayout:
+            MDLabel:
+                text: "Verify Your Account"
+                font_style: 'H6'
+                font_name: 'Poppins'
+                color: [0,0,0,1]
+                pos_hint: {'center_x': .67, 'center_y': .9}
+            MDLabel:
+                text: 'Enter the OTP send to you in the field below.'
+                font_size: '15dp'
+                font_name: 'Poppins'
+                pos_hint: {'center_x': .55, 'center_y': .8}
+                size_hint_x: .8
+            MDTextFieldRect:
+                id: otp
+                size_hint: .28,.065
+                pos_hint: {'center_x': .29, 'center_y': .7}
+                font_size: '22dp'
+                padding: '5dp'
+            RaisedButton:
+                text: 'Verify'
+                size_hint:.3, .06
+                pos_hint: {'center_x': .66, 'center_y': .7}
+                on_release: app.verify_OTP(otp)
+
+            Widget:

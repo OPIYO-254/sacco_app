@@ -1,0 +1,43 @@
+MDScreen:
+    name: 'update_profile'
+    on_leave: 
+        update_image.source = 'assets/images/logo.png'
+    MDBoxLayout:
+        orientation:'vertical'
+        TopBar:
+            left_action_items : [["chevron-left" , lambda _: setattr(root.manager, 'current', 'registered_members')]]
+            title: 'Update Profile'
+        MDBoxLayout:
+            md_bg_color: 9/255, 178/255, 159/255, .2
+            MDFloatLayout:
+                FitImage:
+                    id:update_image
+                    source: 'assets/images/logo.png'
+                    size_hint: None, None
+                    height: '120dp'
+                    width: '120dp'
+                    radius:[120,]
+                    pos_hint: {'center_x': .5, 'center_y': .8}
+                MDRoundFlatButton:
+                    text: 'Upload photo'
+                    pos_hint: {"center_x": .5, "center_y": .6}
+                    font_name: 'Poppins-SemiBold'
+                    on_press: app.file_manager_open()
+                    theme_text_color:'Custom'
+                    text_color: 9/255, 178/255, 159/255, 1
+                    line_color: 9/255, 178/255, 159/255, 1
+                    size_hint_x: .4
+                TextField:
+                    hint_text:'Phone No. (Optional)'
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    size_hint_x: .8
+                TextField:
+                    hint_text: 'Residence (Optional)'
+                    pos_hint: {'center_x': .5, 'center_y': .4}
+                    size_hint_x: .8
+            
+                RaisedButton:
+                    text: 'Update'
+                    pos_hint: {'center_x': .5, 'center_y': .28}
+
+

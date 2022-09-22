@@ -1,0 +1,69 @@
+Screen:
+    name: 'guarantors'
+    on_enter: app.fetch_loan_id()
+    on_leave: guarantor_no.text = ''
+    BoxLayout:
+        orientation: 'vertical'
+        TopBar:
+            right_action_items : [["close-circle" , lambda _: setattr(root.manager, 'current', 'registered_members')]]
+            title: 'Add Guarantors'
+        MDFloatLayout:
+            md_bg_color: 9/255, 178/255, 159/255, .2
+            MDBoxLayout:
+                size_hint: .8,.06
+                pos_hint: {'center_x': .5, 'center_y': .92}
+                spacing: '10dp'
+                padding: '5dp'
+                md_bg_color: get_color_from_hex("#09B29F")
+                MDLabel:
+                    text: 'Loan ID:'
+                    font_name: "Poppins"
+                    color: get_color_from_hex("#FFFFFF")
+                    halign:'left'
+                    font_name: 'Poppins-SemiBold'
+                MDLabel:
+                    id:loanid
+                    color: get_color_from_hex("#FFFFFF")
+                    font_name: "Poppins"
+                    halign:'right'
+                    font_name: 'Poppins-SemiBold'
+            MDBoxLayout:
+                pos_hint: {'center_x': .5, 'center_y': .82}
+                size_hint: .8,.08
+                spacing: '10dp'
+                padding: '5dp'
+                MDLabel:
+                    text: 'Guarantor Member No.'
+                    color: get_color_from_hex("#09B29F")
+                    font_name: 'Poppins-SemiBold'
+                    font_size:'15dp'
+                TextInput:
+                    id:guarantor_no
+                    size_hint_x: .2
+                    font_name: 'Poppins-Bold'
+                    foreground_color: get_color_from_hex("#09B29F")
+                    multiline: False
+                    halign:'center'
+            RaisedButton:
+                text: 'Add'
+                font_name: "assets/Poppins/Poppins-SemiBold.ttf"
+                pos_hint: {'center_x': .5, 'center_y': .72}
+                on_release:
+                    app.load_guarantor_requests(loanid,guarantor_no)
+            MDFlatButton:
+                text: 'Refresh'
+                font_size: "12sp"
+                size_hint_y: .1
+                font_name: "Poppins-SemiBold"
+                pos_hint: {"center_x": .5, "center_y": .65}
+                theme_text_color: "Custom"
+                text_color: 9/255, 178/255, 159/255, 1
+                background_color: (1,1,1,1)
+                on_release:app.fetch_loan_id()
+            ScrollView:
+                size_hint: .8, .44
+                pos_hint: {'center_x': .5, 'center_y': .35}
+                text_color: get_color_from_hex("#09B29F")
+                MDList:
+                    id: list
+                    

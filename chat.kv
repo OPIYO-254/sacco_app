@@ -1,0 +1,13 @@
+Screen:
+    name: "chat"
+    BoxLayout:
+        orientation: "vertical"
+        TopBar:
+            left_action_items : [["chevron-left" , lambda _: setattr(root.manager, 'current', 'registered_members')]]
+        MDBoxLayout:
+            md_bg_color:9/255, 178/255, 159/255, .1
+            padding: 10
+            MDLabel:
+                text:'Chatting with admin\n coming up soon'
+                halign:'center'
+                valign:'center'

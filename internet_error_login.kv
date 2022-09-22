@@ -1,0 +1,47 @@
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+#: import SlideTransition kivy.uix.screenmanager.SlideTransition
+
+Screen:
+    name: 'internet_error_login'
+    on_enter: app.animateError(error)
+    MDBoxLayout:
+        orientation:'vertical'
+        md_bg_color: (9/255, 178/255, 159/255, .2)
+        TopBar:
+        MDFloatLayout:
+            MDLabel:
+                id: error
+                text: 'Oops!!'
+                pos_hint: {'center_x': .5,'center_y': .8}
+                halign: 'center'
+                font_size: '24dp'
+                font_name: 'Poppins-Bold'
+                color: (1,0,0,1)
+
+            MDLabel:
+                text: 'No internet connection'
+                pos_hint: {'center_x': .5,'center_y': .7}
+                halign: 'center'
+                font_size: '20dp'
+                font_name: 'Poppins-SemiBold'
+                color: (1,0,0,1)
+                
+            MDLabel:
+                text: 'Check your connection \nand try again'
+                pos_hint: {'center_x': .5,'center_y': .6}
+                halign: 'center'
+                font_size: '18dp'
+                font_name: 'Poppins'
+                color: (1,0,0,1)
+            MDRaisedButton:
+                text: 'Try Again'
+                pos_hint: {'center_x': .5,'center_y': .375}
+                md_bg_color: (9/255, 178/255, 159/255, 1)
+                font_name: 'Poppins-SemiBold'
+                font_size: '12dp'
+                on_release: 
+                    app.root.transition = SlideTransition(direction='left')
+                    root.manager.current = 'main-screen'
+                    
+                    
+

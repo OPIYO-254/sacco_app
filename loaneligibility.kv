@@ -1,0 +1,59 @@
+
+# <RectCard@MDCard>:
+#     orientation: "vertical"
+#     size_hint_y: None
+#     size_hint_x: .9
+#     size: "280dp", "100dp"
+#     # line_color:(57/255, 56/255, 56/255, 1)
+#     radius: 10
+#     ripple_behavior: True
+
+Screen:
+    name: 'eligibility'
+    MDBoxLayout:
+        orientation: 'vertical'
+        TopBar:
+            left_action_items : [["chevron-left" , lambda _: setattr(root.manager, 'current', 'registered_members')]]
+            title: 'Loan Eligibility'
+        
+        ScrollView:
+            seize: self.size
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height
+                width: self.minimum_width
+                spacing: '20dp'
+                padding: '20dp'
+                RectCard:
+                    MDFloatLayout:
+                        MDLabel:
+                            text: 'Membership duration'
+                            pos_hint_y: .75
+                        MDLabel:
+                            text: ''
+                            pos_hint_y: .25
+                RectCard:
+                    MDFloatLayout:
+                    MDLabel:
+                        text: 'Share'
+                        pos_hint_y: .75
+                    MDLabel:
+                        text: ''
+                        pos_hint_y: .25
+                RectCard:
+                    MDFloatLayout:
+                        MDLabel:
+                            text: 'Savings'
+                            pos_hint_y: .75
+                        MDLabel:
+                            text: ''
+                            pos_hint_y: .25
+                RectCard:
+                    MDFloatLayout:
+                        MDLabel:
+                            text: 'Qualification'
+                            pos_hint_y: .75
+                        MDLabel:
+                            text: ''
+                            pos_hint_y: .25

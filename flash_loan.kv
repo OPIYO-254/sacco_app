@@ -1,0 +1,96 @@
+MDScreen:
+    name: 'flash_loan'
+    on_leave:slider.value='1000'
+    on_enter:
+        amount.text=''
+    MDBoxLayout:
+        orientation:'vertical'
+        TopBar:
+            left_action_items : [["chevron-left" , lambda _: setattr(root.manager, 'current', 'registered_members')]]
+            title: 'Flash Loan'
+        MDBoxLayout:
+            md_bg_color: 9/255, 178/255, 159/255, .2
+            MDFloatLayout:
+                MDBoxLayout:
+                    size_hint: .8,.12
+                    pos_hint: {'center_x': .5, 'center_y': .89}
+                    md_bg_color: 9/255, 178/255, 159/255, .65
+                    radius: [10,]
+                    MDLabel:
+                        id: eligibility
+                        text: 'Congraturalations you qualify for a flash loan'
+                        halign: 'center'
+                        font_name: 'Poppins-SemiBold'
+                        color: 1,1,1,1
+                MDBoxLayout:
+                    size_hint: .9,.06
+                    pos_hint: {'center_x': .5, 'center_y': .77}
+                    MDSlider:
+                        id:slider
+                        hint: True
+                        max:10000
+                        value:500
+                        step:100
+                        hint_bg_color: 1,1,1,1
+                        color: 9/255, 178/255, 159/255, 1
+                        on_touch_up: app.flash_loan_amount(principal)
+                MDBoxLayout:
+                    size_hint: .8,.06
+                    pos_hint: {'center_x': .5, 'center_y': .7}
+                    MDLabel:
+                        text:'Member No:'
+                        halign:'left'
+                    MDLabel:
+                        id:members_no
+                        text: '00'
+                        halign:'right'
+                        size_hint_x:.35
+                        font_name:'Poppins-Bold'
+                        color: 9/255, 178/255, 159/255, 1
+                        canvas.before:
+                            Color:
+                                rgba: 1,1,1,.5
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+                        
+                MDBoxLayout:
+                    size_hint: .8,.06
+                    pos_hint: {'center_x': .5, 'center_y': .6}
+                    spacing:10
+                    MDLabel:
+                        text: 'Principal'
+                        halign:'left'
+                    TextInput:
+                        id:principal
+                        text: str(int(slider.value))
+                        size_hint_x: .4
+                        padding: ['10dp','5dp','10dp','5dp']
+                        font_name:'Poppins-SemiBold'
+                        text_color: 9/255, 178/255, 159/255, 1
+                        multiline: False
+                MDBoxLayout:
+                    size_hint: .8,.06
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    # spacing:10
+                    MDLabel:
+                        text: 'Loan Amount'
+                        halign:'left'
+                    MDLabel:
+                        id:amount
+                        size_hint_x: .35
+                        font_name:'Poppins-SemiBold'
+                        color: 9/255, 178/255, 159/255, 1
+                        halign: 'right'
+                        canvas.before:
+                            Color:
+                                rgba: 1,1,1,.5
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+                RaisedButton:
+                    text:'Submit'
+                    pos_hint: {'center_x': .5, 'center_y': .4}
+                    size_hint_x: .8
+                    on_release: app.flash_loan_application(members_no, principal)
+

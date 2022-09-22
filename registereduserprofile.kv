@@ -1,0 +1,362 @@
+
+<SQCard@MDCard>:
+    orientation: "vertical"
+    size_hint_y: None
+    size_hint_x: .3
+    size: "85dp", "85dp"
+    md_bg_color: (57/255, 56/255, 56/255, .65)
+    radius: 20
+    padding: 20
+    spacing: 0
+
+<CardIcon@MDIcon>:
+    pos_hint: {'center_x': .5, 'center_y': .5}
+    color: [6/255, 188/255, 34/255, 1]
+<CardLabel@MDLabel>:
+    color: 1,1,1,1
+    font_size: 20
+    halign: 'center'
+<AmountLabel@MDLabel>:
+    font_size: '12dp'
+    color: 9/255, 178/255, 159/255, 1
+    font_name: 'Poppins-SemiBold'
+    canvas.before:
+        Color:
+            rgba: 1,1,1,.5
+        Rectangle:
+            pos:self.pos
+            size:self.size
+
+
+MDScreen:
+    name: 'registered_members'
+    on_enter:
+        app.load_homepage_details()
+    MDBottomNavigation:
+        panel_color: 9/255, 178/255, 159/255, .3
+        text_color_normal: (57/255, 56/255, 56/255, 1)
+        text_color_active: 9/255, 178/255, 159/255, 1
+        MDBottomNavigationItem:
+            icon: 'home'
+            name: "registered_home"
+            MDBoxLayout:
+                orientation: "vertical"
+                md_bg_color:9/255, 178/255, 159/255, .1
+                TopBar:
+                    right_action_items :[["account-circle-outline", lambda x: app.logout(), "Logout", "Logout"]]
+                    size_hint_y: None
+                    height: '24dp'
+                    title: 'Home'
+                MDBoxLayout:
+                    padding: ['20dp','20dp','20dp','0dp']
+                    size_hint_y: None
+                    height: "120dp"
+                    MDBoxLayout:
+                        md_bg_color: 9/255, 178/255, 159/255, 1#(6/255, 188/255, 34/255, 1)
+                        size_hint: .9, 1
+                        radius: [20,20,]
+                        padding: 10
+                        MDBoxLayout:
+                            padding: 10
+                            size_hint_x: .4
+                            FitImage:
+                                id: profile_image
+                                size_hint: None, None
+                                height: dp(70)
+                                width: dp(70)
+                                radius: [70,]
+                        MDBoxLayout:
+                            padding: 20
+                            spacing: 20
+                            orientation:'vertical'
+                            MDLabel:
+                                id: member_no
+                                halign: 'left'
+                                valign: 'top'
+                                font_name: 'Poppins-SemiBold'
+                                color: 1,1,1,1
+                                
+                            MDLabel:
+                                id: username
+                                halign: 'left'
+                                valign: 'center'
+                                font_name: 'Poppins-SemiBold'
+                                color: 1,1,1,1
+                                font_size: '12dp'
+                            MDLabel:
+                                id: totalcontributions
+                                halign: 'left'
+                                valign: 'bottom'
+                                font_name: 'Poppins-SemiBold'
+                                color: 1,1,1,1
+                                font_size: '12dp'
+                MDBoxLayout:
+                    orientation:"vertical"
+                    spacing: "10dp"
+                    padding: '20dp', '20dp'
+                    radius: [20,0]
+                    GridLayout:
+                        cols: 3
+                        spacing: "8dp"
+                        size_hint_x: 1
+                        pos_hint_x: .56
+
+                        SQCard:
+                            ripple_behavior: True
+                            on_release: root.manager.current = "view_members"
+                            CardIcon:
+                                icon: 'wallet-membership'
+                            CardLabel:
+                                text: 'View Members'
+                        SQCard:
+                            ripple_behavior: True
+                            on_release: root.manager.current='update_profile'
+                            CardIcon:
+                                icon: 'account'
+                            CardLabel:
+                                text: 'Update Profile'
+
+                        SQCard:
+                            ripple_behavior: True
+                            on_release: root.manager.current = "flash_loan"
+                            CardIcon:
+                                icon: 'flash-outline'
+                            CardLabel:
+                                text: 'Flash Loan'
+                                
+                        SQCard:
+                            ripple_behavior: True
+                            on_release: root.manager.current = "loan_products"
+                            CardIcon:
+                                icon: 'cash'
+
+                            CardLabel:
+                                text: 'Loan products'
+                        SQCard:
+                            ripple_behavior: True
+                            on_release: root.manager.current = "loans_in_progress"
+                            CardIcon:
+                                icon: 'cash-fast'
+                            
+                            CardLabel:
+                                text: 'Loans in progress'
+                        SQCard:
+                            ripple_behavior: True
+                            on_release:root.manager.current="applied_loans"
+                            CardIcon:
+                                icon: 'cash-marker'
+                            CardLabel:
+                                text: 'Track loan'
+                        SQCard:
+                            ripple_behavior: True
+                            CardIcon:
+                                icon: 'cash-remove'
+                            CardLabel:
+                                text: 'Cancel loan'
+                        
+                        SQCard:
+                            ripple_behavior: True
+                            on_release: root.manager.current='guarantee_loan'
+                            
+                            CardIcon:
+                                icon: 'cash-refund'
+                            
+                            CardLabel:
+                                text: 'Guarantee Loan'
+                                
+                        SQCard:
+                            ripple_behavior: True
+                            CardIcon:
+                                icon: 'cash-check'
+                            CardLabel:
+                                text: 'Loans guaranteed'
+                                
+        
+
+                #     GridLayout:
+                #         cols: 1
+                #         rows: 3
+                #         size_hint_y: None
+                #         height: self.minimum_height
+                #         width: self.minimum_width
+                #         spacing: "10dp"
+                #         padding: "10dp"
+                #         RectCard:
+                #             md_bg_color: 31/255,191/255,184/255,.1
+                #             size_hint_y: None
+                #             height: '120dp'
+                #             padding: "10dp"
+                #             MDBoxLayout:
+                #                 size_hint_y: .08
+                #                 MDLabel:
+                #                     text: 'Individual membership'
+                #                     font_name: "Poppins-Bold"
+                #                     color: 9/255, 178/255, 159/255, 1
+                #                     font_size: '12dp' 
+                #                     halign: 'center'  
+                #             MDBoxLayout:      
+                #                 MDLabel:
+                #                     text: "• One must be 18 years and above.\n• One must have a national ID card. \n• One must have a copy of KRA pin certificate.\n• Dully completed application form"
+                #                     font_name: "Poppins-SemiBold"
+                #                     color: 9/255, 178/255, 159/255, 1
+                #                     font_size: '10dp'
+                            
+                                
+                #         RectCard:
+                #             md_bg_color: 5/255,113/255,108/255,.1
+                #             size_hint_y: None
+                #             height: '150dp'
+                #             padding: "12dp"
+                #             MDBoxLayout:
+                #                 size_hint_y: .08
+                #                 MDLabel:
+                #                     text: 'Group membership'
+                #                     font_name: "Poppins-Bold"
+                #                     pos_hint: {"center_x": .5, "center_y": .9}
+                #                     color: get_color_from_hex("#05716C")
+                #                     font_size: '12dp' 
+                #                     halign: 'center'  
+                #             MDBoxLayout:
+                #                 MDLabel:
+                #                     text: "• Completed membership application form.\n• Copy of registration certificate. \n• Minutes of the group meeting resolving to join the Sacco. \n• Copies of national identification cards, KRA pins   and photos of the authorised signatories. \n• List of group members"
+                #                     font_name: "Poppins-SemiBold"
+                #                     pos_hint: {"center_x": .5, "center_y": .4}
+                #                     color: get_color_from_hex("#05716C")
+                #                     font_size: '10dp'
+                #             Widget:
+                #                 size_hint_y: .18
+                #         RectCard:
+                #             md_bg_color: 25/255,120/255,160/255,.1
+                #             size_hint_y: None
+                #             height: '150dp'
+                #             padding: "12dp"
+                #             MDBoxLayout:
+                #                 size_hint_y: .08
+                #                 MDLabel:
+                #                     text: 'Corporate membership'
+                #                     font_name: "Poppins-Bold"
+                #                     color: get_color_from_hex("#1978A5")
+                #                     font_size: '12dp' 
+                #                     halign: 'center'  
+                #             MDBoxLayout:
+                #                 MDLabel:
+                #                     text: "• Dully filled corporate membership application form. \n• Directors resolution to open the account with the   Sacco. \n• Copy of certificate of incorporation. \n• ID or Passport copies and photos of signatories. \n• Memorandum and articles of association \n• Copy of KRA corporate pin certificate"
+                #                     font_name: "Poppins-SemiBold"
+                #                     pos_hint: {"center_x": .5, "center_y": .4}
+                #                     color: get_color_from_hex("#1978A5")
+                #                     font_size: '10dp'
+                #             Widget:
+                #                 size_hint_y: .08
+
+        MDBottomNavigationItem:
+            icon: 'cash-lock-open'
+            name: 'contribution_history'
+            on_enter: app.load_contributions_history()
+            on_leave:contribution_view.clear_widgets()
+            MDBoxLayout:
+                orientation:"vertical"
+                TopBar:
+                    title: "Contribution History"
+                MDBoxLayout:
+                    orientation:'vertical'
+                    spacing: '10dp'
+                    padding: '10dp'
+                    MDBoxLayout:
+                        orientation:'vertical'
+                        spacing: '10dp'
+                        padding: '10dp'
+                        size_hint_y: .3
+                        md_bg_color: 9/255, 178/255, 159/255, .3
+                        radius:[10,]
+                        AmountLabel:
+                            id: tshares
+                        AmountLabel:
+                            id: tsavings
+                        AmountLabel:
+                            id:tcontributions
+                            font_name: 'Poppins-Bold'
+                    MDBoxLayout:
+                        md_bg_color: 9/255, 178/255, 159/255, .2
+                        radius:[10,]
+                        ScrollView:
+                            size: self.size
+                            size_hint_x: 1
+                            text_color: get_color_from_hex("#09B29F")
+                            padding: '5dp'
+                            MDList:
+                                id: contribution_view
+                                pos_hint: {"center_x": .5, "center_y": .5}
+                                size_hint_x: 1
+                                
+        
+        
+        # MDBottomNavigationItem:
+            
+       
+            # on_enter: app.add_faqs()
+            
+
+                        # MDList:
+                        #     divider_color: 9/255, 178/255, 159/255, 1
+                        #     TwoLineListItem:
+                        #         id:item
+                        #         
+                        #         secondary_text: "Secondary text here"
+                        #     TwoLineListItem:
+                        #         text: "2. How does a member become eligible for a loan?"
+                        #         secondary_text: "Secondary text here"
+                        #     TwoLineListItem:
+                        #         text: "
+                        #         secondary_text: "Secondary text here"
+                        #     TwoLineListItem:
+                        #         text: "Two-line item"
+                        #         secondary_text: "Secondary text here"
+                            
+            
+        # MDBottomNavigationItem:
+        #     icon: 'chat'
+        #     name: 'f'
+        #     MDBoxLayout:
+        #         orientation: 'vertical'
+        #         md_bg_color:9/255, 178/255, 159/255, .1
+        #         TopBar:
+        #             title: 'Talk to Us'
+        #         MDBoxLayout:
+        #             padding: '20dp'
+                    
+        MDBottomNavigationItem:
+            icon: 'dots-horizontal-circle'
+            name: 'more'
+            MDBoxLayout:
+                orientation: 'vertical'
+                md_bg_color:9/255, 178/255, 159/255, .1
+                TopBar:
+                    title: 'More'
+                MDBoxLayout:
+                    padding: '20dp'
+                    orientation:'vertical'
+                    ScrollView:
+                        MDList:
+                            OneLineIconListItem:
+                                text: 'FAQs'
+                                on_release: root.manager.current='faqs'
+                                IconLeftWidget:
+                                    icon: "information"
+                            OneLineIconListItem:
+                                text: 'Talk to Us'
+                                on_release:root.manager.current='chat'
+                                IconLeftWidget:
+                                    icon: "chat"
+                            OneLineIconListItem:
+                                text:'Add Next of Kin'
+                                on_release:root.manager.current='nextofkins'
+                                IconLeftWidget:
+                                    icon: "family-tree"
+                            OneLineIconListItem:
+                                text:'Help'
+                                on_release:root.manager.current='contact_us'
+                                IconLeftWidget:
+                                    icon: "help-circle"
+                            
+                            
+                   

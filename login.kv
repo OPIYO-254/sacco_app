@@ -1,0 +1,86 @@
+
+<TextField@MDTextField>:
+    font_name: "Poppins"
+    font_size: "15sp"
+    background_color: 0,0,1,0
+    cursor_color: 0,0,0,1
+    text_color_focus: 9/255, 178/255, 159/255, 1
+    text_color_normal: 9/255, 178/255, 159/255, 1
+    hint_text_color_normal: 155/255, 155/255, 155/255, 1
+    hint_text_color_focus: 9/255, 178/255, 159/255, 1
+    multiline: False
+    line_color_normal: 9/255, 178/255, 159/255, 1
+    line_color_focus: 155/255, 155/255, 155/255, 1
+    icon_right_color: [9/255, 178/255, 159/255, 1]
+
+Screen:
+    name: "login-screen"
+    BoxLayout:
+        orientation: "vertical"
+        
+        TopBar:
+            left_action_items : [["chevron-left" , lambda _: setattr(root.manager, 'current', 'main-screen')]]
+            title: "Login"
+        MDFloatLayout:
+            # md_bg_color: 1,1,0,1
+            TextField:
+                id: txt_email
+                hint_text: "Email"
+                pos_hint: {"center_x": .5, "center_y": .8}
+                icon_right: "email"
+                size_hint_x: .8
+            TextField:
+                hint_text:"Password"
+                id: txt_password
+                pos_hint: {"center_x": .5, "center_y": .7}
+                password: True
+                size_hint_x: .8
+            MDIconButton:
+                icon: "eye-off"
+                pos_hint: {"center_y": .7}
+                pos: txt_password.width - self.width + dp(36), 0
+                theme_text_color: "Hint"
+                on_release:
+                    self.icon = "eye" if self.icon == "eye-off" else "eye-off"
+                    txt_password.password = False if txt_password.password is True else True
+            MDFlatButton:
+                text: "Forgot password?"
+                font_size: "12sp"
+                size_hint_y: .1
+                font_name: "assets/Poppins/Poppins-Regular.ttf"
+                pos_hint: {"center_x": .5, "center_y": .625}
+                theme_text_color: "Custom"
+                text_color: 9/255, 178/255, 159/255, 1
+                background_color: (1,1,1,1)
+                # on_release: root.manager.current='registered_members'
+                # on_release: root.manager.current='send_reset_otp'
+
+            RaisedButton:
+                text: "Login"
+                pos_hint: {"center_x": .5, "center_y": .55}
+                on_release: app.client_login(txt_email, txt_password)
+
+            MDLabel:
+                text: "Don't have account?"
+                font_size: "12sp"
+                size_hint_y: .5
+                halign: "center"
+                color: 9/255, 178/255, 159/255, 1
+                font_name: "assets/Poppins/Poppins-Regular.ttf"
+                pos_hint: {"center_x": .5, "center_y": .475}
+                text_color: 9/255, 178/255, 159/255, 1
+                background_color: (1,1,1,1)
+
+            MDFlatButton:
+                text: "Create account?"
+                font_size: "12sp"
+                size_hint_y: .1
+                halign: "center"
+                color: 9/255, 178/255, 159/255, 1
+                font_name: "Poppins-SemiBold"
+                pos_hint: {"center_x": .5, "center_y": .425}
+                theme_text_color: "Custom"
+                text_color: 9/255, 178/255, 159/255, 1
+                background_color: (1,1,1,1)
+                on_release:
+                    root.manager.current='signup-screen'

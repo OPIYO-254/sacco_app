@@ -1,0 +1,95 @@
+
+Screen:
+    name: "about-screen"
+    BoxLayout:
+        orientation: "vertical"
+        TopBar:
+            left_action_items : [["chevron-left" , lambda _: setattr(root.manager, 'current', 'registered_members')]]
+            title: "About Us"
+        MDFloatLayout:
+            md_bg_color: 1,1,1,1
+            padding: 10
+            spacing: 20
+            pos_hint: {"center_x": .5, "center_y": .95}
+            size_hint: 1, .05
+        ScrollView:
+            size: self.size
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height
+                width: self.minimum_width
+                spacing: '20dp'
+                padding: '20dp'
+                MDCard:
+                    size_hint: .8,None
+                    height: '160dp'
+                    pos_hint: {'center_x': .5, 'center_y': .8}
+                    orientation: 'vertical'
+                    padding: '10dp'
+                    radius: [15,]
+                    MDLabel:
+                        text:'About Us'
+                        size_hint_y: .1
+                        font_name: "assets/Poppins/Poppins-SemiBold.ttf"
+                        pos_hint: {"center_x": .5, "center_y": .9}
+                        color:get_color_from_hex("#09B29F")
+                        halign: 'center'
+                    MDLabel:
+                        text: 'Sojrel Sacco is a financial institution aimed at helping young people achieve financial independence and prosperity by providing them with affordable financial products.'
+                        pos_hint_y: .6
+                MDCard:
+                    size_hint: .8,None
+                    height: '80dp'
+                    pos_hint: {'center_x': .5, 'center_y': .6}
+                    orientation: 'vertical'
+                    padding: '10dp'
+                    radius: [15,]
+                    MDLabel:
+                        text:'Vision'
+                        size_hint_y: .1
+                        size_hint_y: .1
+                        font_name: "assets/Poppins/Poppins-SemiBold.ttf"
+                        pos_hint: {"center_x": .5, "center_y": .9}
+                        color:get_color_from_hex("#09B29F")
+                        halign: 'center'
+                    MDLabel:
+                        text:'To be Kenya’s most society-oriented financial provider'
+                        pos_hint_y: .5
+                MDCard:
+                    size_hint: .8,None
+                    height: '100dp'
+                    pos_hint: {'center_x': .5, 'center_y': .4}
+                    orientation: 'vertical'
+                    padding: '10dp'
+                    radius: [15,]
+                    MDLabel:
+                        text: 'Mission'
+                        size_hint_y: .1
+                        size_hint_y: .1
+                        font_name: "assets/Poppins/Poppins-SemiBold.ttf"
+                        pos_hint: {"center_x": .5, "center_y": .9}
+                        color:get_color_from_hex("#09B29F")
+                        halign: 'center'
+                    MDLabel:
+                        text: 'To uplift life in the society through provision of affordable financial services and ideas'
+                        pos_hint_y: .5
+                    
+                MDCard:
+                    size_hint: .8,None
+                    height: '160dp'
+                    pos_hint: {'center_x': .5, 'center_y': .4}
+                    orientation: 'vertical'
+                    padding: '10dp'
+                    radius: [15,]
+                    MDLabel:
+                        text: 'Values'
+                        size_hint_y: .1
+                        size_hint_y: .1
+                        font_name: "assets/Poppins/Poppins-SemiBold.ttf"
+                        pos_hint: {"center_x": .5, "center_y": .9}
+                        color:get_color_from_hex("#09B29F")
+                        halign: 'center'
+                    MDLabel:
+                        text: '• Integrity \n• Accountability \n• Transparency \n• Customer focus \n• Objectivity \n• Proactivity'
+                        pos_hint_y: .6   

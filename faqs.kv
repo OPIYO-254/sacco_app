@@ -1,0 +1,53 @@
+MDScreen:
+    name:'faqs'
+    MDBoxLayout: 
+        orientation:'vertical' 
+        TopBar:
+            title: 'FAQs'
+            left_action_items : [["chevron-left" , lambda _: setattr(root.manager, 'current', 'registered_members')]]
+        MDBoxLayout:
+            padding: '20dp'
+            md_bg_color:9/255, 178/255, 159/255, .1  
+            ScrollView:
+                GridLayout:
+                    cols:1
+                    size_hint_y: None
+                    height:self.minimum_height
+                    spacing: 10
+                    RectCard:
+                        md_bg_color:9/255, 178/255, 159/255, .2
+                        padding:10
+                        MDLabel:
+                            text: "1. What kind of contributions do members make?"
+                            halign:'center'
+                        MDLabel:
+                            text: "Answer to question" 
+                    RectCard:
+                        md_bg_color:9/255, 178/255, 159/255, .2
+                        MDLabel:
+                            text: "2. How does a member become eligible for a loan?"
+                            halign:'center'
+                        MDLabel:
+                            text:"Answer"
+                    RectCard:
+                        md_bg_color:9/255, 178/255, 159/255, .2
+                        MDLabel:
+                            text: '3. Under what circumstances does one cease to become a member?'
+                            halign:'center'
+                        MDLabel:
+                            text: "Answer3"
+                    RectCard:
+                        md_bg_color:9/255, 178/255, 159/255, .2
+                        MDLabel:
+                            text: '4. Under what circumstances does one cease to become a member?'
+                            halign:'center'
+                        MDLabel:
+                            text: "Answer3"
+                    RectCard:
+                        md_bg_color:9/255, 178/255, 159/255, .2
+                        MDLabel:
+                            text: '5. Under what circumstances does one cease to become a member?'
+                            halign:'center'
+                        MDLabel:
+                            text: "Answer3"
+        

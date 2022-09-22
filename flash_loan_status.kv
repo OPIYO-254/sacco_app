@@ -1,0 +1,103 @@
+
+<NoteCard@MDCard+RectangularElevationBehavior>:
+    md_bg_color: 9/255, 178/255, 159/255, 1
+MDScreen:
+    name: 'loan_status'
+    MDBoxLayout:
+        orientation:'vertical'
+        TopBar:
+            left_action_items : [["chevron-left" , lambda _: setattr(root.manager, 'current', 'registered_members')]]
+            title: 'Flash Loan Status'
+        MDFloatLayout:
+            md_bg_color: 9/255, 178/255, 159/255, .1
+            orientation:'vertical' 
+            NoteCard:
+                elevation:20
+                shadow_offset: 1, 6
+                padding:20
+                orientation:'vertical'
+                pos_hint:{'center_x':.5,'center_y':.88}
+                size_hint: .9,.1
+                MDBoxLayout:
+                    orientation:'vertical'
+                    MDLabel:
+                        text:'Membership No.:'
+                        halign:'left'
+                    MDLabel:
+                        id:member_no
+                        halign:'right'
+                MDBoxLayout:
+                    MDLabel:
+                        text:''
+                        halign:'left'
+                    TextInput:
+                        id: loanid
+                        halign:'right'
+            NoteCard:
+                elevation:20
+                shadow_offset: 1, 6
+                padding:20
+                orientation:'vertical'
+                pos_hint:{'center_x':.5,'center_y':.88}
+                size_hint: .9,.18
+                MDFloatLayout:
+                    MDLabel:
+                        id:loan_status
+                        text:'Loan Under Review'
+                        font_name:'Poppins-SemiBold'
+                        pos_hint:{'center_x':.5,'center_y':.9}
+                        color:1,1,1,1
+                        font_size:'15dp'
+                        valign: 'top'
+                    MDLabel:
+                        pos_hint:{'center_x':.5,'center_y':.425}
+                        text:'Note: It may take upto 6 hours for your loan to be approved. Once approved, your will receive a notification'
+                        font_name:'Poppins'
+                        font_size:'12dp'
+                        color:1,1,1,1
+            NoteCard:
+                elevation:20
+                shadow_offset: 1, 6
+                padding:20
+                orientation:'vertical'
+                pos_hint:{'center_x':.5,'center_y':.6}
+                size_hint: .9,.3
+                MDBoxLayout:
+                    MDLabel:
+                        text:'Amount Applied'
+                        halign:'left'
+                        color:1,1,1,1
+                        font_name:'Poppins-SemiBold'
+                    MDLabel:
+                        id:principal
+                        text:'0000'
+                        halign:'right'
+                        color:1,1,1,1
+                        font_name:'Poppins-SemiBold'
+                        size_hint_x:.3
+                MDBoxLayout:
+                    MDLabel:
+                        text:'Amount to repay'
+                        halign:'left'
+                        color:1,1,1,1
+                        font_name:'Poppins-SemiBold'
+                    MDLabel:
+                        id:amount
+                        text:'0000'
+                        halign:'right'
+                        color:1,1,1,1
+                        font_name:'Poppins-SemiBold'
+                        size_hint_x:.3
+                MDBoxLayout:
+                    MDLabel:
+                        id:due_date
+                        text:'Due Date'
+                        halign:'left'
+                        color:1,1,1,1
+                        font_name:'Poppins-SemiBold'
+                    MDLabel:
+                        text:'1 Jan 2021'
+                        halign:'right'
+                        color:1,1,1,1
+                        font_name:'Poppins-SemiBold'
+                        size_hint_x:.5

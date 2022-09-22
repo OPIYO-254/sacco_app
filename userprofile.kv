@@ -1,0 +1,384 @@
+
+Screen:
+    name: "my_profile-screen"
+    id: profile
+    BoxLayout:
+        orientation: "vertical"
+        TopBar:
+            left_action_items :
+                [["chevron-left" , lambda _: setattr(root.manager, 'current', 'homepage')]]
+            title: 'Update Profile'
+        MDFloatLayout:
+            MDCard:
+                size_hint: 1, 1
+                pos_hint: {"center_x": .5, "center_y": .5}
+
+            MDLabel:
+                text: "Membership"
+                font_name: 'Poppins'
+                pos_hint: {"center_x": .63, "center_y": .9}
+                font_size: "10sp"
+                color:(9/255, 178/255, 159/255, 1)
+            MDIconButton:
+                icon: "numeric-1-circle"
+                pos_hint: {"center_x": .2, "center_y": .86}
+                user_font_size: "25sp"
+                font_color: (9/255, 178/255, 159/255, 1)
+            MDProgressBar:
+                size_hint: .2,.02
+                pos_hint: {"center_x": .3, "center_y": .86}
+                mb_bg_color: (9/255, 178/255, 159/255, 1)
+
+            MDLabel:
+                text: "Personal"
+                font_name: 'Poppins'
+                pos_hint: {"center_x": .85, "center_y": .9}
+                font_size: "10sp"
+                color:(9/255, 178/255, 159/255, 1)
+            MDIconButton:
+                icon: "numeric-2-circle"
+                #font_name: 'Poppins'
+                pos_hint: {"center_x": .4, "center_y": .86}
+                user_font_size: "25sp"
+            MDProgressBar:
+                size_hint: .2,.02
+                pos_hint: {"center_x": .5, "center_y": .86}
+                mb_bg_color: (9/255, 178/255, 159/255, 1)
+            MDLabel:
+                text: "Contact"
+                font_name: 'Poppins'
+                pos_hint: {"center_x": 1.05, "center_y": .9}
+                font_size: "10sp"
+                color:(9/255, 178/255, 159/255, 1)
+            MDIconButton:
+                icon: "numeric-3-circle"
+                #font_name: 'Poppins'
+                pos_hint: {"center_x": .6, "center_y": .86}
+                user_font_size: "25sp"
+            MDProgressBar:
+                size_hint: .2,.02
+                pos_hint: {"center_x": .7, "center_y": .86}
+                mb_bg_color: (9/255, 178/255, 159/255, 1)
+
+            MDLabel:
+                text: "Submit"
+                font_name: 'Poppins'
+                pos_hint: {"center_x": 1.242, "center_y": .9}
+                font_size: "10sp"
+                color:(9/255, 178/255, 159/255, 1)
+
+            MDIconButton:
+                icon: "numeric-4-circle"
+                #font_name: 'Poppins'
+                pos_hint: {"center_x": .8, "center_y": .86}
+                user_font_size: "25sp"
+
+            Carousel:
+                id: slide
+                MDFloatLayout:
+                    padding: 20
+                    spacing: 50
+                    MDLabel:
+                        text: "Membership Information"
+                        size_hint_x: .8
+                        pos_hint: {"center_x": .6, "center_y": .8}
+                        color: 9/255, 178/255, 159/255, 1
+                        font_name: 'Poppins'
+                    FitImage:
+                        id: profile_image
+                        source: "assets/images/logo.png"
+                        size_hint_y: None
+                        size_hint_x: None
+                        height: dp(120)
+                        width: dp(120)
+                        pos_hint: {"center_x": .5, "center_y": .65}
+                        radius: [120,]
+                    MDFlatButton:
+                        text: 'Upload photo'
+                        pos_hint: {"center_x": .5, "center_y": .5}
+                        elevation: 5
+                        on_press: app.file_manager_open()
+                        text_color: 9/255, 178/255, 159/255, 1
+                        size_hint_x: .8
+
+                    TextField:
+                        id: date
+                        hint_text: "Date"
+                        size_hint_x: .8
+                        pos_hint: {"center_x": .5, "center_y": .4}
+                        on_focus: app.show_date_picker()
+
+                    RaisedButton:
+                        text: "Next"
+                        size_hint_x: .8
+                        pos_hint: {"center_x": .5, "center_y": .24}
+                        on_release:
+                            app.next()
+
+
+                MDFloatLayout:
+                    MDLabel:
+                        text: "Personal Information"
+                        size_hint_x: .8
+                        pos_hint: {"center_x": .66, "center_y": .8}
+                        color: 9/255, 178/255, 159/255, 1
+                        font_size: '15dp'
+                        font_name: 'Poppins'
+                    TextField:
+                        id: id_no
+                        hint_text: "ID No."
+                        size_hint_x: .8
+                        pos_hint: {"center_x": .5, "center_y": .7}
+
+                    TextField:
+                        id: birth_date
+                        hint_text: "D.O.B"
+                        size_hint_x: .8
+                        pos_hint: {"center_x": .5, "center_y": .6}
+                        on_focus:app.show_dob()
+                    MDLabel:
+                        text: 'Gender:'
+                        font_name: 'Poppins'
+                        pos_hint: {"center_x": .6, "center_y": .5}
+                        color: [9/255, 178/255, 159/255, 1]
+                        font_size: '15dp'
+                    MDCheckbox:
+                        group: 'gender'
+                        id: male
+                        size_hint: None, None
+                        size: dp(48), dp(48)
+                        pos_hint: {"center_x": .45, "center_y": .5}
+                        on_active: app.check_gender()
+                    MDLabel:
+                        text: 'Male'
+                        font_name: 'Poppins'
+                        pos_hint: {"center_x": .995, "center_y": .5}
+                        color: [155/255, 155/255, 155/255, 1]
+                        font_size: '15dp'
+                    MDCheckbox:
+                        group: 'gender'
+                        id: female
+                        size_hint: None, None
+                        size: dp(48), dp(48)
+                        pos_hint: {"center_x": .7, "center_y": .5}
+                        on_active: app.check_gender()
+                    MDLabel:
+                        text: 'Female'
+                        font_name: 'Poppins'
+                        pos_hint: {"center_x": 1.25, "center_y": .5}
+                        color: [155/255, 155/255, 155/255, 1]
+                        font_size: '15dp'
+                    TextField:
+                        id: kra
+                        hint_text: "KRA Pin No."
+                        size_hint_x: .8
+                        pos_hint: {"center_x": .5, "center_y": .4}
+                    MDLabel:
+                        id: file_selected
+                        text: 'No File Selected'
+                        font_name: 'Poppins'
+                        pos_hint: {"center_x": .6, "center_y": .3}
+                        color: [155/255, 155/255, 155/255, 1]
+                        font_size: '15dp'
+
+                    RaisedButton:
+                        text: "Choose File"
+                        size_hint_x: .8
+                        pos_hint: {"center_x": .5, "center_y": .2}
+                        on_release: app.kra_file_manager_open()
+
+                    RaisedButton:
+                        text: "Previous"
+                        size_hint_x: .39
+                        pos_hint: {"center_x": .3, "center_y": .1}
+                        on_release: app.prev()
+                    RaisedButton:
+                        text: "Next"
+                        size_hint_x: .39
+                        pos_hint: {"center_x": .7, "center_y": .1}
+                        on_release:
+                            app.next()
+
+                MDFloatLayout:
+                    MDLabel:
+                        text: "Personal Information"
+                        size_hint_x: .8
+                        pos_hint: {"center_x": .66, "center_y": .8}
+                        color: 9/255, 178/255, 159/255, 1
+                        font_size: '15dp'
+                        font_name: 'Poppins'
+                    MDLabel:
+                        text: 'Upload Images of your ID'
+                        font_name: 'Poppins'
+                        pos_hint: {"center_x": .66, "center_y": .75}
+                        color: [9/255, 178/255, 159/255, 1]
+                        font_size: '15dp'
+                        size_hint_y: None
+                        height: self.height
+
+                    Camera:
+                        orientation: 'horizontal'
+                        id: id_front
+                        play: False
+                        resolution: (640, 400)
+                        size_hint:.8, .28
+                        pos_hint: {"center_x": .5, "center_y": .58}
+                        padding: 0
+                        canvas:
+                            Color:
+                                rgba: (9/255, 178/255, 159/255, .1)
+                            Rectangle:
+                                pos: self.pos
+                                size: self.size
+                    MDIconButton:
+                        icon: "camera"
+                        pos_hint: {"center_x": .26, "center_y": .510}
+                        icon_size: "22sp"
+                        on_press: app.capture(id_front)
+
+                    MDIconButton:
+                        icon: "content-save"
+                        pos_hint: {"center_x": .75, "center_y": .510}
+                        icon_size: "22sp"
+                        on_press: app.upload(id_front)
+
+                    Camera:
+                        orientation: 'horizontal'
+                        id: id_back
+                        play: False
+                        resolution: (640, 400)
+                        size_hint:.8, .28
+                        pos_hint: {"center_x": .5, "center_y": .28}
+                        padding: 0
+                        canvas:
+                            Color:
+                                rgba: (9/255, 178/255, 159/255, .1)
+                            Rectangle:
+                                pos: self.pos
+                                size: self.size
+
+                    MDIconButton:
+                        icon: "camera"
+                        pos_hint: {"center_x": .26, "center_y": .210}
+                        icon_size: "22sp"
+                        on_press: app.capture(id_back)
+
+                    MDIconButton:
+                        icon: "content-save"
+                        pos_hint: {"center_x": .75, "center_y": .210}
+                        icon_size: "22sp"
+                        on_press: app.upload(id_back)
+
+                    RaisedButton:
+                        text: "Previous"
+                        size_hint_x: .39
+                        pos_hint: {"center_x": .3, "center_y": .08}
+                        on_release: app.prev()
+                    RaisedButton:
+                        text: "Next"
+                        size_hint_x: .39
+                        pos_hint: {"center_x": .7, "center_y": .08}
+                        on_release:
+                            app.next()
+                            #app.get_front_id()
+                            #app.get_back_id()
+
+                MDFloatLayout:
+                    MDLabel:
+                        text: "Contact Information"
+                        size_hint_x: .8
+                        font_name: 'Poppins'
+                        pos_hint: {"center_x": .67, "center_y": .8}
+                        color: 9/255, 178/255, 159/255, 1
+                    TextField:
+                        id: phone
+                        text: ''
+                        hint_text: "Phone No."
+                        size_hint_x: .8
+                        pos_hint: {"center_x": .5, "center_y": .7}
+
+                    TextField:
+                        id: mail
+                        hint_text: "Email"
+                        size_hint_x: .8
+                        pos_hint: {"center_x": .5, "center_y": .6}
+
+                    TextField:
+                        id:residence
+                        hint_text: "Place of residence"
+                        size_hint_x: .8
+                        pos_hint: {"center_x": .5, "center_y": .5}
+
+                    RaisedButton:
+                        text: "Previous"
+                        size_hint_x: .39
+                        pos_hint: {"center_x": .3, "center_y": .36}
+                        on_release: app.prev()
+                    RaisedButton:
+                        text: "Next"
+                        size_hint_x: .39
+                        pos_hint: {"center_x": .7, "center_y": .36}
+                        on_release: app.next()
+
+                MDFloatLayout:
+                    MDLabel:
+                        text: "Terms and Conditions"
+                        size_hint_x: .9
+                        font_name: 'assets/Poppins/Poppins-SemiBold.ttf'
+                        pos_hint: {"center_x": .75, "center_y": .8}
+                        color: 9/255, 178/255, 159/255, 1
+                        font_size: '12dp'
+                    ScrollView:
+                        orientation: 'vertical'
+                        size_hint: 1, None
+                        height: "200dp"
+                        size_hint_x: .9
+                        pos_hint: {"center_x": .565, "center_y": .56}
+                        padding: '8dp'
+                        do_scroll_x: False
+                        MDLabel:
+                            size_hint_y: None
+                            text_size: (self.width, None)
+                            height: self.texture_size[1]
+                            text: "1. Members must submit copies of their national ID and KRA certificate. \n2. Membership will require payment of a minimum of 1 share equivalent to Ksh. 10,000 to be considered a member of the society. \n3. Shares will be non-refundable but can only be transferred to existing members of the Sacco. \n4. Savings are only withdrawable upon membership withdrawal from the Sacco. \n5. Members are eligible to access loan services upon meeting membership requirements and made contributions for a period of at least 6 months. \n6. Membership withrawal will officially be done through writing a letter to the Sacco management 2 months prior."
+                            size_hint_x: .88
+                            font_size: '12dp'
+                            font_name: 'Poppins'
+                            pos_hint: {"center_x": .5, "center_y": .1}
+                            color: 9/255, 178/255, 159/255, 1
+                            multiline: True
+                            canvas.before:
+                                Color:
+                                    rgba: (1,1,1,1)
+                                Rectangle:
+                                    pos: self.pos
+                                    size: self.size
+
+                    MDCheckbox:
+                        pos_hint: {"center_x": .15, "center_y": .3}
+                        size_hint: .06,.06
+                        on_active: app.check_terms()
+                    MDLabel:
+                        text: 'Agree to terms and conditions'
+                        pos_hint: {"center_x": .7, "center_y": .3}
+                        font_size: '14dp'
+                        font_name: 'Poppins'
+                        color: 9/255, 178/255, 159/255, 1
+                    RaisedButton:
+                        text: "Previous"
+                        size_hint_x: .39
+                        pos_hint: {"center_x": .3, "center_y": .2}
+                        on_release: app.prev()
+                    RaisedButton:
+                        text: "Cancel"
+                        size_hint_x: .39
+                        pos_hint: {"center_x": .7, "center_y": .2}
+                        on_release: root.manager.current='homepage'
+
+                    RaisedButton:
+                        text: "Submit"
+                        size_hint_x: .8
+                        pos_hint: {"center_x": .5, "center_y": .1}
+                        on_release: 
+                            app.update_profile(date, id_no, birth_date, kra, phone, mail, residence)
+                            

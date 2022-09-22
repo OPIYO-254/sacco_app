@@ -1,0 +1,42 @@
+<TopBar@MDTopAppBar>:
+    title: 'Sojrel Sacco Ltd'
+    size_hint: 1, .14
+    font_style: "H6"
+    font_name: "Poppins"
+    md_bg_color: (9/255, 178/255, 159/255, 1)
+<Grid@MDGridLayout>:
+    canvas.before:
+        PushMatrix
+        Rotate:
+            angle: root.angle
+            origin: self.center
+    canvas.after:
+        PopMatrix
+
+Screen:
+    name: 'anim_loading'
+    # on_enter: app.load_animation(loading, *args)
+    BoxLayout:
+        orientation: "vertical"
+        TopBar:
+        MDFloatLayout:
+            md_bg_color: 1,1,1,1
+            Grid:
+                id: loading
+                angle: 0
+                rows: 2
+                cols: 2
+                size_hint: None, None
+                width: 60
+                height: 60
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                spacing: 5
+                MDFloatLayout:
+                    md_bg_color: rgba(242,80,34,255)
+                MDFloatLayout:
+                    md_bg_color: rgba(127,186,0,255)
+                MDFloatLayout:
+                    md_bg_color: rgba(0,164,239,255)
+                MDFloatLayout:
+                    md_bg_color: rgba(255,185,0,255)
+                    

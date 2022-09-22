@@ -1,0 +1,100 @@
+Screen:
+    name: "contact_us"
+    BoxLayout:
+        orientation: "vertical"
+        TopBar:
+            left_action_items : [["chevron-left" , lambda _: setattr(root.manager, 'current', 'registered_members')]]
+        MDBoxLayout:
+            md_bg_color:9/255, 178/255, 159/255, .1
+            padding: 10
+            MDList:
+                size_hint_y:1
+                TwoLineAvatarIconListItem:
+                    text:'Phone'
+                    secondary_text:'07XXXXXXXX'
+                    IconLeftWidget:
+                        icon: "phone"
+                    IconRightWidget:
+                        icon:'chevron-right'
+                TwoLineAvatarIconListItem:
+                    text:'Email Us'
+                    secondary_text:'sojrelsacco@gmail.com'
+                    IconLeftWidget:
+                        icon: "email"
+                    IconRightWidget:
+                        icon:'chevron-right'
+                TwoLineAvatarIconListItem:
+                    text:'Visit our website'
+                    secondary_text:'https://'
+                    IconLeftWidget:
+                        icon: "link"
+                    IconRightWidget:
+                        icon:'chevron-right'
+                
+            # MDLabel:
+            #     text: "Send Us Email"
+            #     pos_hint: {"center_x": .5, "center_y": .92}
+            #     halign: "center"
+            #     theme_text_color: "Custom"
+            #     text_color: 9/255, 178/255, 159/255, 1
+            #     font_size: "15sp"
+            #     font_name: "Poppins"
+            # MDLabel:
+            #     text: "Email"
+            #     pos_hint: {"center_x": .15, "center_y": .85}
+            #     halign: "center"
+            #     theme_text_color: "Custom"
+            #     text_color: 9/255, 178/255, 159/255, 1
+            #     font_size: "12sp"
+            #     font_name: "Poppins"
+            # MDTextField:
+            #     pos_hint: {"center_x": .5, "center_y": .8}
+            #     size_hint: .8, .12
+            #     line_color_normal: 9/255, 178/255, 159/255, 1
+            #     font_name: "Poppins"
+            #     icon_right: "email"
+            #     icon_right_color: 9/255, 178/255, 159/255, 1
+            # MDLabel:
+            #     text: "Phone No."
+            #     pos_hint: {"center_x": .19, "center_y": .72}
+            #     halign: "center"
+            #     theme_text_color: "Custom"
+            #     text_color: 9/255, 178/255, 159/255, 1
+            #     font_size: "12sp"
+            #     font_name: "Poppins"
+
+            # MDTextField:
+            #     pos_hint: {"center_x": .5, "center_y": .67}
+            #     size_hint: .8, .12
+            #     line_color_normal: 9/255, 178/255, 159/255, 1
+            #     icon_right: "cellphone"
+            #     icon_right_color: 9/255, 178/255, 159/255, 1
+
+            # MDLabel:
+            #     text: "Message"
+            #     pos_hint: {"center_x": .18, "center_y": .6}
+            #     halign: "center"
+            #     theme_text_color: "Custom"
+            #     text_color: 9/255, 178/255, 159/255, 1
+            #     font_size: "12sp"
+            #     font_name: "Poppins"
+            # MDTextFieldRect:
+            #     #mode: 'rectangle'
+            #     id: txt_message
+            #     pos_hint: {"center_x": .5, "center_y": .4}
+            #     multiline: True
+            #     size_hint: .8, None
+            #     height: "150dp"
+
+            # RaisedButton:
+            #     id: btn_clear
+            #     text: "Clear"
+            #     size_hint: .8,.06
+            #     pos_hint: {"center_x": .5, "center_y": .18}
+            #     on_release: txt_message.text=""
+            # RaisedButton:
+            #     id: btn_send
+            #     text: "Send"
+            #     size_hint: .8,.06
+            #     pos_hint: {"center_x": .5, "center_y": .08}
+            #     text_color: 1,1,1,1

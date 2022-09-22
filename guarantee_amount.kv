@@ -1,0 +1,162 @@
+
+Screen:
+    name: 'guarantee_amount'
+    on_enter:
+        app.load_toguarantee_loans()
+        app.load_loan_details(lid, member_no)
+    on_leave:
+        lid.text=''
+        member_no.text=''
+        gamount.text=''
+        idno.text=''
+    MDBoxLayout:
+        orientation: 'vertical'
+        TopBar:
+            left_action_items : [["chevron-left" , lambda _: setattr(root.manager, 'current', 'guarantee_loan')]]
+            title: 'Guarantee Loan'                      
+        MDBoxLayout:
+            spacing: '10dp'
+            padding: '20dp'
+            orientation:'vertical'
+            md_bg_color: 9/255, 178/255, 159/255, .08
+            MDBoxLayout:
+                size_hint_y: .4
+                md_bg_color: 9/255, 178/255, 159/255, .1
+                radius:[10]
+                orientation:'vertical'
+                padding:10
+                spacing: 10
+                MDBoxLayout:
+                    md_bg_color: 9/255, 178/255, 159/255, .08
+                    padding: 10
+                    MDLabel:
+                        text:'Loan Applicant'
+                        halign:'left'
+                        color:9/255, 178/255, 159/255, 1
+                        font_name:'Poppins-SemiBold'
+                        font_size:'12dp'
+                    MDLabel:
+                        id:name
+                        halign:'right'
+                        color:9/255, 178/255, 159/255, 1
+                        font_name:'Poppins-SemiBold'
+                        font_size:'12dp'
+                MDBoxLayout:
+                    md_bg_color: 9/255, 178/255, 159/255, .08
+                    padding: 10
+                    MDLabel:
+                        text: 'Loan Type'
+                        halign:'left'
+                        color:9/255, 178/255, 159/255, 1
+                        font_name:'Poppins-SemiBold'
+                        font_size:'12dp'
+                    MDLabel:
+                        id: category
+                        halign:'right'
+                        color:9/255, 178/255, 159/255, 1
+                        font_name:'Poppins-SemiBold'
+                        font_size:'12dp'
+                MDBoxLayout:
+                    md_bg_color: 9/255, 178/255, 159/255, .08
+                    padding: 10
+                    MDLabel:
+                        text: 'Loan Amount'
+                        halign:'left'
+                        color:9/255, 178/255, 159/255, 1
+                        font_name:'Poppins-SemiBold'
+                        font_size:'12dp'
+                    MDLabel:
+                        id:amount
+                        halign:'right'
+                        color:9/255, 178/255, 159/255, 1
+                        font_name:'Poppins-SemiBold'
+                        font_size:'12dp'
+                MDBoxLayout:
+                    md_bg_color: 9/255, 178/255, 159/255, .08
+                    padding: 10
+                    MDLabel:
+                        text:'Instalments' 
+                        halign:'left'
+                        color:9/255, 178/255, 159/255, 1
+                        font_name:'Poppins-SemiBold'
+                        font_size:'12dp'
+                    MDLabel:
+                        id:instalment
+                        halign:'right'  
+                        color:9/255, 178/255, 159/255, 1
+                        font_name:'Poppins-SemiBold'
+                        font_size:'12dp'
+            MDBoxLayout:
+                size_hint_y:.1
+                md_bg_color: 9/255, 178/255, 159/255, .75
+                radius:[10,]
+                padding: 10
+                MDLabel:
+                    text: 'Loan ID'
+                    halign:'left'
+                    color:1,1,1,1
+                    font_name: 'Poppins-SemiBold'
+                MDLabel:
+                    id:lid
+                    halign:'right'
+                    color:1,1,1,1
+                    size_hint_x: .3
+                    font_name: 'Poppins-SemiBold'
+            MDBoxLayout:
+                size_hint_y:.1
+                md_bg_color: 9/255, 178/255, 159/255, .75
+                radius:[10,]
+                padding: 10
+                MDLabel:
+                    text: 'Membership No.'
+                    halign:'left'
+                    color:1,1,1,1
+                    font_name: 'Poppins-SemiBold'
+                MDLabel:
+                    id: member_no
+                    halign:'right'
+                    color:1,1,1,1
+                    size_hint_x: .3
+                    font_name: 'Poppins-SemiBold'
+            MDBoxLayout:
+                size_hint_y:.1
+                md_bg_color: 9/255, 178/255, 159/255, .75
+                radius:[10,]
+                padding: [10,15,10,15]
+                MDLabel:
+                    text:'Enter Your ID No.'
+                    halign:'left'
+                    color:1,1,1,1
+                    font_name: 'Poppins-SemiBold'
+                TextInput:
+                    id: idno
+                    size_hint_x: .45
+                    halign:'right'
+                    multiline:False
+            MDBoxLayout:
+                size_hint_y:.1
+                md_bg_color: 9/255, 178/255, 159/255, .75
+                radius:[10,]
+                padding: [10,15,10,15]
+                MDLabel:
+                    text:'Enter Amount'
+                    halign:'left'
+                    color:1,1,1,1
+                    font_name: 'Poppins-SemiBold'
+                TextInput:
+                    id: gamount
+                    size_hint_x: .45
+                    halign:'right'
+                    multiline:False
+            RaisedButton:
+                text: 'Guarantee'
+                size_hint_x:1
+                on_release:app.guarantee(lid, member_no,idno,gamount)
+
+            RaisedButton:
+                text: 'Decline'
+                size_hint_x:1
+                on_release: app.reject_guarantee(lid, member_no)
+          
+                
+                

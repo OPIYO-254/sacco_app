@@ -1,0 +1,27 @@
+
+Screen:
+    name: 'guarantee_loan'
+    on_enter: 
+        app.load_toguarantee_loans()
+        
+    on_leave:loan_guarantee_list.clear_widgets()
+    MDBoxLayout:
+        orientation: 'vertical'
+        TopBar:
+            left_action_items : [["chevron-left" , lambda _: setattr(root.manager, 'current', 'registered_members')]]
+            title: 'Guarantee Loans'
+        MDBoxLayout:
+            padding: '10dp'
+            size_hint_y: .9
+            ScrollView:
+                size: self.size
+                size_hint_x: .8
+                pos_hint: {'center_x': .5, 'center_y': .52}
+                text_color: get_color_from_hex("#09B29F")
+                MDGridLayout:
+                    cols:1
+                    size_hint_y:None
+                    height: self.height
+                    padding:'10dp'
+                    spacing: '10dp'
+                    id: loan_guarantee_list

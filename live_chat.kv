@@ -1,0 +1,17 @@
+Screen:
+    name: "send_email"
+    id: scr_mngr
+    BoxLayout:
+        orientation: "vertical"
+        TopBar:
+            left_action_items : [["chevron-left" , lambda _: setattr(root.manager, 'current', 'registered_members')]]
+            title:'Chat with Admin'
+        MDBoxLayout:
+            md_bg_color: 1,1,1,1
+            padding: 10
+            spacing: 20
+            MDLabel:
+                text: 'Live chats with \nadmin coming up soon'
+                halign:'center'
+                font_name: 'Poppins-Bold'
+                valign:'center'
